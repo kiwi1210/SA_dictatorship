@@ -86,7 +86,7 @@ main {
 #content-per-country {
   display: flex;
   flex-direction: row-reverse;
-  width: 95%;
+  width: 97%;
   height: 100vh;
   box-sizing: border-box;
   overflow: hidden;
