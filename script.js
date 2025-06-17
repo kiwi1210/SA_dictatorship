@@ -43,6 +43,8 @@ function toggleMenu() {
       }
     }
   });
+
+
 //Gabis svg Highlight map
 console.log('Brazil element:', document.getElementById('Brazil'));
 console.log('Year label element:', document.getElementById('year-label'));
