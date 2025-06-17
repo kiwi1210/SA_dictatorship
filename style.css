@@ -185,6 +185,12 @@ main {
   gap: 60px; /* Space between countries */
 }
 
+#map {
+  width: 35% !important; /* Force the map to take 35% width */
+  height: 100vh;
+  flex-shrink: 0; /* Prevent the map from shrinking */
+}
+
 .media-container h1 {
   font-size: 30px;
   margin: 0px;
