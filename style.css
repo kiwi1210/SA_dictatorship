@@ -171,13 +171,9 @@ main {
   overflow: hidden;
   justify-self: center;
   /*Aditional Adjustments because of responsiveness*/
-  box-sizing: border-box;
-  overflow: hidden;
   max-width: 100%;
   overflow-x: hidden; /* Prevent horizontal overflow */
 }
-}
-
 
 /* Right side: countries content */
 .media-container {
@@ -328,14 +324,6 @@ ul {
 
 .counter {
   font-size: 12px;
-}
-
-.slider-controls.off {
-  display: none;
-}
-
-.counter.off {
-  display: none;
 }
 
 /*Adding responsiveness for this part here - by Gabi*/
