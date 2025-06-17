@@ -4506,3 +4506,145 @@ legend.onAdd = function () {
 };
 
 legend.addTo(map);
+
+
+// Scroll-based map interaction
+let isScrolling = false;
+let scrollTimeout;
+
+function getVisibleSection() {
+  const sections = document.querySelectorAll('section.countries[id]');
+
+  // Target your specific media-container
+  const contentContainer = document.querySelector('.media-container');
+
+  if (!contentContainer) {
+    console.log('Media container not found, falling back to window scroll');
+    // Fallback to window scroll if media-container not found
+    const viewportHeight = window.innerHeight;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    for (let section of sections) {
+      const rect = section.getBoundingClientRect();
+      const sectionTop = rect.top + scrollTop;
+      const sectionBottom = sectionTop + rect.height;
+
+      if (sectionTop <= scrollTop + viewportHeight * 0.7 && 
+          sectionBottom >= scrollTop + viewportHeight * 0.3) {
+        return section.id;
+      }
+    }
+  } else {
+    // Using media-container scroll
+    const containerHeight = contentContainer.clientHeight;
+    const scrollTop = contentContainer.scrollTop;
+
+    for (let section of sections) {
+      const sectionTop = section.offsetTop - contentContainer.offsetTop;
+      const sectionBottom = sectionTop + section.offsetHeight;
+
+      // Check if section is significantly visible in the media container
+      if (sectionTop <= scrollTop + containerHeight * 0.7 && 
+          sectionBottom >= scrollTop + containerHeight * 0.3) {
+        return section.id;
+      }
+    }
+  }
+  return null;
+}
+
+function zoomToCountryFromScroll(countryCode) {
+  if (!countryCode) return;
+
+  // List of non-interactive territories that should not zoom
+  const nonInteractiveTerritories = ['GUF', 'TTO', 'GUY', 'FLK'];
+  if (nonInteractiveTerritories.includes(countryCode)) return;
+
+  // Find the layer for this country
+  let targetLayer = null;
+
+  // Search through all layers to find the matching country
+  [militaryLayer, condorLayer, geojson].forEach(layerGroup => {
+    layerGroup.eachLayer(layer => {
+      if (layer.feature && layer.feature.properties.id === countryCode) {
+        targetLayer = layer;
+      }
+    });
+  });
+
+  if (targetLayer) {
+    // Reset previous selection if different
+    if (selectedLayer && selectedLayer !== targetLayer) {
+      militaryLayer.resetStyle(selectedLayer);
+      condorLayer.resetStyle(selectedLayer);
+      geojson.resetStyle(selectedLayer);
+    }
+
+    // Set new selection
+    selectedLayer = targetLayer;
+
+    // Apply highlight style
+    targetLayer.setStyle({
+    //   weight: 3,
+    //   color: '#ffffff',
+    //   dashArray: '',
+    //   fillOpacity: targetLayer.options.fillOpacity
+      weight: 6,
+      fillColor: '#f5a316',
+      color: '#fff',
+      stroke: true,
+      dashArray: '',
+      fillOpacity: 0.2
+    });
+
+    // Zoom to country
+    map.fitBounds(targetLayer.getBounds(), { maxZoom: 6 });
+  }
+}
+
+// Scroll event listener targeting your specific structure
+const mediaContainer = document.querySelector('.media-container');
+
+if (mediaContainer) {
+  console.log('Found media-container, attaching scroll listener');
+  mediaContainer.addEventListener('scroll', function() {
+    if (!isScrolling) {
+      isScrolling = true;
+
+      // Clear existing timeout
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+
+      // Set timeout to check visible section after scroll stops
+      scrollTimeout = setTimeout(function() {
+        const visibleCountry = getVisibleSection();
+        if (visibleCountry) {
+          console.log('Visible country:', visibleCountry);
+          zoomToCountryFromScroll(visibleCountry);
+        }
+        isScrolling = false;
+      }, 150);
+    }
+  });
+} else {
+  console.log('Media container not found, using window scroll');
+  // Fallback to window scroll
+  window.addEventListener('scroll', function() {
+    if (!isScrolling) {
+      isScrolling = true;
+
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+
+      scrollTimeout = setTimeout(function() {
+        const visibleCountry = getVisibleSection();
+        if (visibleCountry) {
+          zoomToCountryFromScroll(visibleCountry);
+        }
+        isScrolling = false;
+      }, 150);
+    }
+  });
+}
