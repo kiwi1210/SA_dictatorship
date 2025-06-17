@@ -1,0 +1,727 @@
+* { /*too all*/
+  box-sizing: border-box;
+} /*total size (width) includes padding and border*/
+
+/*Base Styles */
+
+body {
+  font-family: Georgia, serif;
+  background-color: #ffffff;
+  color: #000000;
+  line-height: 1.6;
+  padding: 0 px;
+  margin: 0;
+}
+
+/* Header */
+header {
+  background-color: #000000; 
+  padding: 20px 0;
+  text-align: center;
+  color: #ffffff; 
+}
+
+
+/* Links */
+a {
+  color: #ffffff;
+}
+
+/* Footer */
+footer {
+  background-color: #000000;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 0.9em;
+  color: #ffffff; 
+}
+
+
+/* Main content area */
+main {
+  font-family: Georgia, serif;
+/*   max-width: 800px; */
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* ----- Gabis SVG Map Area ----- */
+
+#map-container svg {
+  width: 100%;        /* Make SVG width fill its container */
+  height: auto;       /* Maintain aspect ratio */
+  max-width: 400px;   /* limit max width */
+  display: block;     /* Remove inline space */
+  margin: 0 auto;     /* Center horizontally */
+}
+
+#map-container legend{
+  font-family: Georgia, serif;
+  font-size: 12px;
+  fill: #000000;
+  bottom: 1rem;
+  right: 1rem;
+}
+.country {
+  transition: fill 0.2s ease; /* Smooth color transition */
+}
+
+/* Highlighted state (e.g., during dictatorship year) */
+.highlight {
+  fill: #ffb22c; /* Bright red, or pick your preferred color */
+}
+
+/* Optional: year label styling */
+#year-label {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 20px;
+  color: #222222;
+}
+
+
+
+/* ------- Bea ------- */
+/* General Layout: map on the left and content on the right*/
+#content-per-country {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+
+/* Right side: countries content */
+.media-container {
+  width: 65%;
+  overflow-y: auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  color: #000000;
+  display: flex;
+  flex-direction: column;
+  gap: 60px; /* Space between countries */
+}
+
+.media-container h1 {
+  font-size: 30px;
+  margin: 0px;
+}
+
+.media-container h2 {
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.media-container p {
+ 
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+.media-container a {
+  color: inherit;
+}
+
+.lyrics-block {
+  display: flex;
+  margin: 10px;
+  gap: 35px;
+}
+
+.lyrics-block p {
+  font-size: 10px;
+}
+
+.paragraph-indent {
+  text-indent: 2em;
+}
+
+.short p {
+  width: 90%;
+  gap: 10px;
+  margin: 10px
+}
+
+.lyrics-pt p {
+  font-style: italic;
+}
+
+
+/* Countries blocks */
+.countries {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Slides container */
+.slide-box {
+  position: relative;
+  flex-grow: 1;
+}
+
+/* Individual Slide */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  width: 100%;
+}
+
+.slide.active {
+  opacity: 1;
+  position: relative;
+  z-index: 1;
+}
+
+/* Controles */
+.slider-controls {
+  text-align: center;
+  position: relative;
+  top: -30px; 
+}
+
+
+.slider-controls button {
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: #000000;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.slider-controls button:hover {
+  transform: scale(1.3);
+}
+
+.counter {
+  font-size: 12px;
+}
+
+
+/*About*/
+#about {
+  background-image: linear-gradient(to right, rgba(255,255,255,0.0) 35%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,1) 100%), url("https://cdn.glitch.global/343a2c4a-c750-4eb7-a587-747e07e49b2c/image-about.jpg?v=1748534754408");
+  background-size: cover;
+  background-position: center;
+  min-height: 600px;
+  color: black;
+
+  display: flex;    
+  justify-content: flex-end;
+  align-items: center;
+  text-align: right;
+}
+
+#about-text {
+  width: 50%;
+  margin-right: 50px;
+}
+
+#about h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+#source-text {
+  font-size: 12px;
+}
+
+#source-text a {
+  color:  inherit;
+}
+
+#footnote {
+  font-size: 10px;
+}
+
+/*Contact*/
+
+.contact {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+#contact h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+html { /*hightlight*/
+  scroll-behavior: smooth;
+}
+/* Betty's Main Page */
+
+#start-page h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5em;
+    margin: 0 auto;
+    width: 40%;
+    text-align:center;
+}
+
+#start-page h2 {
+    font-size:1.5em;
+    background-color: rgb(255, 178, 44);
+    margin: 0 auto;
+    width: 30%;
+    text-align:center;
+}
+
+#start-page p {
+    font-size: 1em;
+    text-align:left;
+    margin: 0 20% 0 50%;
+}
+
+#start-page a{
+   box-sizing: border-box;
+   padding: 1px 2px; 
+   background-color: rgb(191, 191, 191);
+   color:#ffffff;
+   margin: 0 auto;
+   text-align:left;
+   display: inline-block;
+   text-decoration:none;
+}
+
+#start-page {
+    /* This is general for the body*/
+    background-image: url("https://cdn.glitch.global/eacff24a-8a4a-4d9e-a7fd-46684676af74/backgroundMainPage2.png?v=1749309188570");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    /* This is for giving an structure*/
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+  max-width:100vw;
+  height: 100vh;
+}
+
+
+/* Betty's newspaper page */
+
+#newspaper-page {
+    box-sizing: border-box;
+    width:100%;
+    /* height:200%; */
+    font-size:0.7em;
+    background-image: url('https://cdn.glitch.global/eacff24a-8a4a-4d9e-a7fd-46684676af74/background.jpg?v=1748797586685');
+    background-size: cover;    
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#newspaper-page p,h2, h3 {
+   box-sizing: border-box;
+   padding: 5px; 
+}
+
+#newspaper-page a{
+   box-sizing: border-box;
+   padding: 1px 2px; 
+   background-color: rgb(191, 191, 191);
+   color:#ffffff;
+   margin: 0 auto;
+   text-align:left;
+   display: inline-block;
+   text-decoration:none;
+}
+
+#newspaper-page h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3em;
+    margin: 0;
+    text-align:center;
+    border: none;
+    border-bottom: 2px solid #000000;
+}
+
+#newspaper-page h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5em;
+    margin: 0 auto;
+}
+
+#newspaper-page h3 {
+    font-size:0.8em;
+    background-color: rgb(255, 178, 44);
+    margin: 0 auto;
+    text-align:left;
+    display: inline-block;
+}
+
+#newspaper-foreground{
+    max-width: 80%;
+    display: flex;
+    flex-direction:column;
+    justify-self: center;
+    background-color:white;
+    background: rgba(255, 255, 255, 0.8);
+
+
+}
+
+
+#newspaper-content {
+    display:grid;
+    grid-template-columns: 1fr 2fr 1fr; 
+    grid-template-rows: auto auto auto;
+}
+
+#newspaper-1 {
+    grid-column: 1;
+    grid-row:1/4;
+    align-self:start;
+    justify-self:left;
+    padding: 10px;
+    border: none;
+    border-right: 1.5px solid #000000;
+    box-sizing: border-box;
+}
+
+#newspaper-2 {
+    grid-column: 2;
+    grid-row:1/3;
+    align-self:start;
+    justify-self:left;
+    padding: 10px;
+    box-sizing: border-box;
+}
+#newspaper-2 p {
+    column-count: 2;
+    column-gap: 2em; 
+  }
+#newspaper-2slideshow {
+    max-width:100%;
+    height:auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    column-count: 1;
+}
+
+#newspaper2-image { 
+  width: 100%; 
+  height:100%; 
+  object-fit: cover;
+  padding:10px 0 0 0;
+}
+
+#newspaper-2slideshow p {
+background-color: rgb(225, 225, 225);
+   color:#5f5f5f;
+   margin: 0;
+   padding: 1px 2px;
+   text-align: center;
+   width:100%;
+   column-count: 1;
+  font-size: 0.8em;
+}
+
+#newspaper-3 {
+    grid-column: 2/4;
+    grid-row:3;
+    align-self:start;
+    justify-self:left;
+    padding: 10px;
+    box-sizing: border-box;
+    border: none;
+    border-top: 1.5px solid #000000;
+}
+
+#newspaper-3 p{
+   column-count: 3;
+   column-gap: 2em; 
+}
+
+#newspaper-4 {
+    grid-column: 3;
+    grid-row:1/3;
+    align-self:start;
+    justify-self:left;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+
+#newspaper-4image {
+    max-width:100%;
+    height:auto;
+}
+
+#newspaper-4image img { 
+  width: 100%; 
+  height:auto; 
+  object-fit: cover;
+}
+
+
+/*map navigation part */
+#map {
+  width: 35%;
+  height: 100vh;
+}
+
+/* Highlight the country media section when the country is clicked on the map*/
+section.highlight {
+    background-color: rgba(255, 178, 44, 0.1);
+    border-left: 4px solid #FFD700;
+    padding-left: 1rem;
+}
+
+.info.legend {
+    background: #1a1a1a;
+    padding: 10px 14px;
+    font: 14px Arial, sans-serif;
+    color: #F5F2EB;
+    border-radius: 8px;
+    line-height: 24px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+.info.legend h5 {
+    margin: 0 0 6px;
+    font-size: 16px;
+    color: #FFB22C;
+}
+
+.info.legend i {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+    vertical-align: middle;
+    border-radius: 2px;
+}
+
+
+@media (max-width: 768px) {
+  /* Betty's Main Page */
+
+#start-page h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5em;
+    margin: 0 auto;
+    width: 80%;
+    text-align:center;
+}
+
+#start-page h2 {
+    font-size:0.8em;
+    background-color: rgb(255, 178, 44);
+    margin: 0 auto;
+    width: 60%;
+    text-align:center;
+}
+
+#start-page p {
+    font-size: 0.6em;
+    text-align:left;
+    margin: 0 20% 0 50%;
+}
+
+#start-page a{
+   box-sizing: border-box;
+   padding: 1px 2px; 
+   background-color: rgb(191, 191, 191);
+   color:#ffffff;
+   margin: 0 auto;
+   text-align:left;
+   display: inline-block;
+   text-decoration:none;
+}
+
+#start-page {
+    /* This is general for the body*/
+    background-image: url("https://cdn.glitch.global/eacff24a-8a4a-4d9e-a7fd-46684676af74/backgroundMainPage2.png?v=1749309188570");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    /* This is for giving an structure*/
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+  max-width:100vw;
+  height: 100vh;
+}
+
+
+/* Betty's newspaper page */
+
+#newspaper-page {
+    box-sizing: border-box;
+    width:100%;
+    /* height:200%; */
+    font-size:0.7em;
+    background-image: url('https://cdn.glitch.global/eacff24a-8a4a-4d9e-a7fd-46684676af74/background.jpg?v=1748797586685');
+    background-size: cover;    
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#newspaper-page p,h2, h3 {
+   box-sizing: border-box;
+   padding: 5px; 
+}
+
+#newspaper-page a{
+   box-sizing: border-box;
+   padding: 1px 2px; 
+   background-color: rgb(191, 191, 191);
+   color:#ffffff;
+   margin: 0 auto;
+   text-align:left;
+   display: inline-block;
+   text-decoration:none;
+}
+
+#newspaper-page h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2em;
+    margin: 0;
+    text-align:center;
+    border: none;
+    border-bottom: 2px solid #000000;
+}
+
+#newspaper-page h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5em;
+    margin: 0 auto;
+}
+
+#newspaper-page h3 {
+    font-size:0.7em;
+    background-color: rgb(255, 178, 44);
+    margin: 0 auto;
+    text-align:left;
+    display: inline-block;
+}
+
+#newspaper-foreground{
+    max-width: 90%;
+    display: flex;
+    flex-direction:column;
+    justify-self: center;
+    background-color:white;
+    background: rgba(255, 255, 255, 0.8);
+
+
+}
+
+
+#newspaper-content {
+    display:flex;
+  flex-direction:column;
+}
+
+#newspaper-1 {
+    align-self:start;
+    justify-self:left;
+    padding: 10px;
+    border: none;
+    border-bottom: 1.5px solid #000000;
+    box-sizing: border-box;
+}
+
+#newspaper-2 {
+    align-self:start;
+    justify-self:left;
+    padding: 10px;
+    box-sizing: border-box;
+}
+#newspaper-2 p {
+    column-count: 2;
+    column-gap: 1em; 
+  }
+#newspaper-2slideshow {
+    max-width:100%;
+    height:auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    column-count: 1;
+}
+
+#newspaper2-image { 
+  width: 100%; 
+  height:100%; 
+  object-fit: cover;
+  padding:10px 0 0 0;
+}
+
+#newspaper-2slideshow p {
+background-color: rgb(225, 225, 225);
+   color:#5f5f5f;
+   margin: 0;
+   padding: 1px 2px;
+   text-align: center;
+   width:100%;
+   column-count: 1;
+  font-size: 0.6em;
+}
+
+#newspaper-3 {
+    align-self:start;
+    justify-self:left;
+    padding: 10px;
+    box-sizing: border-box;
+    border: none;
+    border-top: 1.5px solid #000000;
+}
+
+#newspaper-3 p{
+   column-count: 2;
+   column-gap: 1em; 
+}
+
+#newspaper-4 {
+    align-self:start;
+    justify-self:left;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+
+#newspaper-4image {
+    max-width:100%;
+    height:auto;
+}
+
+#newspaper-4image img { 
+  width: 100%; 
+  height:auto; 
+  object-fit: cover;
+}
+}
+
+@media (max-width: 480px) {
+  
+  #newspaper-3 p{
+   column-count: 1;
+   column-gap: 1em; 
+}
+
+  #newspaper-2 p {
+    column-count: 1;
+    column-gap: 1em; 
+  }
+  
+}
