@@ -1,4 +1,5 @@
 // don't forget to comment what you do!
+
 //Gabis Hamburger Menu for the Header:
 function toggleMenu() {
     const navMenu = document.querySelector('.nav-menu');
