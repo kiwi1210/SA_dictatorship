@@ -124,15 +124,15 @@ document.querySelectorAll('.countries').forEach(function(section) {
 
 let pictures = [
                 {
-                    picture: "https://cdn.glitch.global/eacff24a-8a4a-4d9e-a7fd-46684676af74/desaparecidosBrazil.jpg?v=1748797595100", 
+                    picture: "assets/desaparecidosBrazil.jpg", 
                     description: "Missing persons during Brazil’s military dictatorship"
                 },
                 {
-                    picture: "https://cdn.glitch.global/eacff24a-8a4a-4d9e-a7fd-46684676af74/desaparecidosDictaduraUruguay.jpg?v=1748797618958",
+                    picture: "assets/desaparecidosDictaduraUruguay.jpg",
                     description: "Missing persons during Uruguay’s military dictatorship"
                 },
                 {
-                    picture: "https://cdn.glitch.global/eacff24a-8a4a-4d9e-a7fd-46684676af74/desaparecidosDictaduraArgentina.jpg?v=1749315889970",
+                    picture: "assets/desaparecidosDictaduraArgentina.jpg",
                     description: "Missing persons during Argentina’s military dictatorship"
                 }
             ];
