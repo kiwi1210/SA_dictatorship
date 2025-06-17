@@ -1,5 +1,47 @@
 // don't forget to comment what you do!
-
+//Gabis Hamburger Menu for the Header:
+function toggleMenu() {
+    const navMenu = document.querySelector('.nav-menu');
+    const menuToggle = document.querySelector('.menu-toggle');
+    
+    navMenu.classList.toggle('active');
+    
+    // Optional: Change hamburger icon to X when menu is open
+    if (navMenu.classList.contains('active')) {
+      menuToggle.innerHTML = '✕';
+    } else {
+      menuToggle.innerHTML = '☰';
+    }
+  }
+  
+  // Optional: Close menu when clicking on a menu item (good UX)
+  document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    const navMenu = document.querySelector('.nav-menu');
+    const menuToggle = document.querySelector('.menu-toggle');
+    
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        navMenu.classList.remove('active');
+        if (menuToggle) {
+          menuToggle.innerHTML = '☰';
+        }
+      });
+    });
+  });
+  
+  // Optional: Close menu when clicking outside of it
+  document.addEventListener('click', function(event) {
+    const navMenu = document.querySelector('.nav-menu');
+    const menuToggle = document.querySelector('.menu-toggle');
+    
+    if (navMenu && menuToggle) {
+      if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+        navMenu.classList.remove('active');
+        menuToggle.innerHTML = '☰';
+      }
+    }
+  });
 //Gabis svg Highlight map
 console.log('Brazil element:', document.getElementById('Brazil'));
 console.log('Year label element:', document.getElementById('year-label'));
