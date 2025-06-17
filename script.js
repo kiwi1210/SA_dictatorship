@@ -4648,3 +4648,33 @@ if (mediaContainer) {
     }
   });
 }
+
+//remove zoom with mouse for responsibility for mobile - Gabi
+// function to detect mobile devices
+function isMobileDevice() {
+    return window.innerWidth <= 480; 
+}
+//  disable zoom after initialization only for mobile
+if (isMobileDevice()) {
+    map.scrollWheelZoom.disable();
+    map.doubleClickZoom.disable();
+    map.touchZoom.disable();
+    map.boxZoom.disable();
+}
+
+// Re-enable zoom when screen size changes (for responsive design)
+window.addEventListener('resize', function() {
+    if (isMobileDevice()) {
+        // Disable zoom on mobile
+        map.scrollWheelZoom.disable();
+        map.doubleClickZoom.disable();
+        map.touchZoom.disable();
+        map.boxZoom.disable();
+    } else {
+        // Enable zoom on larger screens
+        map.scrollWheelZoom.enable();
+        map.doubleClickZoom.enable();
+        map.touchZoom.enable();
+        map.boxZoom.enable();
+    }
+});
