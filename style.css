@@ -90,6 +90,8 @@ main {
   height: 100vh;
   box-sizing: border-box;
   overflow: hidden;
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
 
@@ -151,6 +153,44 @@ main {
   font-style: italic;
 }
 
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.music li::before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.5em;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('assets/music.svg');
+}
+
+.movie li::before {
+  content: '';
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  margin-bottom: -0.5em;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('assets/movie.svg');
+}
+
+.book li::before {
+  content: '';
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  margin-bottom: -0.3em;
+  margin-right: 0.3em;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('assets/book.svg');
+}
 
 /* Countries blocks */
 .countries {
@@ -189,7 +229,6 @@ main {
   top: -30px; 
 }
 
-
 .slider-controls button {
   background: none;
   border: none;
@@ -205,6 +244,14 @@ main {
 
 .counter {
   font-size: 12px;
+}
+
+.slider-controls.off {
+  display: none;
+}
+
+.counter.off {
+  display: none;
 }
 
 
