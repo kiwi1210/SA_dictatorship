@@ -591,7 +591,7 @@ html { /*hightlight*/
 
 #start-page {
     /* This is general for the body*/
-    background-image: url("https://cdn.glitch.global/eacff24a-8a4a-4d9e-a7fd-46684676af74/backgroundMainPage2.png?v=1749309188570");
+    background-image: url('assets/backgroundMainPage2.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
