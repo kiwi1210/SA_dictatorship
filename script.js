@@ -4482,6 +4482,8 @@ function scrollToContent(code) {
     document.querySelectorAll("section").forEach(s => s.classList.remove("highlight"));
     const section = document.getElementById(code);
     if (section) {
+    // Call the scroll function to prevent feedback loop
+    scrollToCountry(code);
     section.classList.add("highlight");
     section.scrollIntoView({ behavior: "smooth", block: "start" });
     }
@@ -4560,6 +4562,7 @@ legend.addTo(map);
 // Scroll-based map interaction
 let isScrolling = false;
 let scrollTimeout;
+let isProgrammaticScroll = false; // Add this flag to prevent feedback loop
 
 function getVisibleSection() {
   const sections = document.querySelectorAll('section.countries[id]');
@@ -4651,12 +4654,46 @@ function zoomToCountryFromScroll(countryCode) {
   }
 }
 
+// Function to handle programmatic scrolling (call this when clicking on map)
+function scrollToCountry(countryId) {
+  const targetSection = document.getElementById(countryId);
+  if (!targetSection) return;
+
+  // Set flag to prevent scroll-based zooming
+  isProgrammaticScroll = true;
+
+  const mediaContainer = document.querySelector('.media-container');
+  
+  if (mediaContainer) {
+    // Scroll within media container
+    const sectionTop = targetSection.offsetTop - mediaContainer.offsetTop;
+    mediaContainer.scrollTo({
+      top: sectionTop,
+      behavior: 'smooth'
+    });
+  } else {
+    // Fallback to window scroll
+    targetSection.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
+
+  // Reset flag after scroll animation completes
+  setTimeout(() => {
+    isProgrammaticScroll = false;
+  }, 1000); // Adjust timing based on your scroll animation duration
+}
+
 // Scroll event listener targeting your specific structure
 const mediaContainer = document.querySelector('.media-container');
 
 if (mediaContainer) {
   console.log('Found media-container, attaching scroll listener');
   mediaContainer.addEventListener('scroll', function() {
+    // Skip if this is a programmatic scroll
+    if (isProgrammaticScroll) return;
+      
     if (!isScrolling) {
       isScrolling = true;
 
@@ -4680,6 +4717,8 @@ if (mediaContainer) {
   console.log('Media container not found, using window scroll');
   // Fallback to window scroll
   window.addEventListener('scroll', function() {
+    if (isProgrammaticScroll) return;
+      
     if (!isScrolling) {
       isScrolling = true;
 
@@ -4697,6 +4736,8 @@ if (mediaContainer) {
     }
   });
 }
+
+window.scrollToCountry = scrollToCountry;
 
 //remove zoom with mouse for responsibility for mobile - Gabi
 // function to detect mobile devices
