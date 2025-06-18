@@ -69,7 +69,7 @@ header {
   color: #ffb22c;
 }
 /* Mobile styles -> only show hamburger menu at 480px and below */
-@media (max-width: 480px) {
+@media (max-width: 520px) {
   .menu-toggle {
     display: block; 
   }
