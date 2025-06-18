@@ -4386,20 +4386,24 @@ const occasional = ['PER'];
 const militaryCountries = ["VEN", "COL", "PRY", "PER", "ECU", "BOL", "BRA", "CHL", "URY", "ARG", "SUR"];
 
 // Define stripe patterns
+// For main active members
 const stripePatternCore = new L.StripePattern({
     weight: 4,
     spaceWeight: 2,
-    color: '#000',
-    opacity: 0.7,
-    angle: 45
+    color: '#fff',
+    spaceOpacity: 0.7,
+    // opacity: 1,
+    angle: 135
 }).addTo(map);
 
+// For occational members
 const stripePatternOccasional = new L.StripePattern({
     weight: 4,
-    spaceWeight: 2,
-    color: '#fff',
+    spaceWeight: 4,
+    color: '#000',
     opacity: 0.7,
-    angle: 135
+    // spaceOpacity: 0.7,
+    angle: 45
 }).addTo(map);
 
 // Base yellow fill for all military dictatorship countries
@@ -4544,8 +4548,8 @@ legend.onAdd = function () {
     <i style="background:rgba(244, 196, 48, 0.7);"></i> Experienced<br>
     <i style="background:transparent; border: 1px solid #ccc;"></i> Not Experienced
     <h5>Operation Condor</h5>
-    <i style="background-image: repeating-linear-gradient(45deg, black, black 4px, transparent 2px, transparent 6px); background-size: 16px 16px; border: 1px solid #808080;"></i> Main active members<br>
-    <i style="background-image: repeating-linear-gradient(135deg, white, white 2px, transparent 2px, transparent 6px); background-size: 16px 16px; opacity: 0.4; border: 1px solid white;"></i> Occasional member<br>
+    <i style="background-image: repeating-linear-gradient(135deg, black, black 4px, #F7F8F9 2px, #F7F8F9 6px); background-size: 16px 16px; border: 1px solid #808080;"></i> Main active members<br>
+    <i style="background-image: repeating-linear-gradient(45deg, white, white 2px, transparent 2px, transparent 6px); background-size: 16px 16px; opacity: 0.4; border: 1px solid white;"></i> Occasional member<br>
     <i style="background:transparent; border: 1px solid #ccc;"></i> No Participation`;
     return div;
 };
