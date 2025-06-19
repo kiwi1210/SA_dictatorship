@@ -4742,7 +4742,7 @@ window.scrollToCountry = scrollToCountry;
 //remove zoom with mouse for responsibility for mobile - Gabi
 // function to detect mobile devices
 function isMobileDevice() {
-    return window.innerWidth <= 480; 
+    return window.innerWidth <= 520; 
 }
 //  disable zoom after initialization only for mobile
 if (isMobileDevice()) {
