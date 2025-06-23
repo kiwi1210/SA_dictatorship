@@ -173,8 +173,8 @@ let pictures = [
                     description: "Missing persons during Brazil’s military dictatorship"
                 },
                 {
-                    picture: "assets/desaparecidosDictaduraUruguay.jpg",
-                    description: "Missing persons during Uruguay’s military dictatorship"
+                    picture: "assets/csm_Uruguay-Schweigemarsch_Marta-Gonz_Flickr_CC-by-nc-sa_1920_8500aca52a.webp",
+                    description: "Marcha del Silencio protest for missing persons during Uruguay’s military dictatorship"
                 },
                 {
                     picture: "assets/desaparecidosDictaduraArgentina.jpg",
